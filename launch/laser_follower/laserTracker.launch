@@ -1,0 +1,16 @@
+<launch>
+
+  <!-- lidar_type：激光雷达类型：本机为【XAS】 -->
+  <arg name="lidar_type" value="$(env LIDAR_TYPE)"/>
+
+  <!-- laser_tracker节点信息 -->
+  <node name='laser_tracker' pkg="laser_follower_slam" type="laserTracker.py" output="screen">
+    <!-- winSize：滤波窗口尺寸 -->
+    <param name="winSize" value="2" type="int" />
+    <!-- deltaDist：滤波Δx -->
+    <param name="deltaDist" value="0.2" type="double" />
+    <!-- lidarType：雷达类型 -->
+    <param name="lidarType" value="$(arg lidar_type)" type="string"/>
+  </node>
+
+</launch>
